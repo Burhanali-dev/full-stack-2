@@ -1,0 +1,17 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  background-color:lightgoldenrodyellow;
+}
+
+
+.container{
+  text-align: center;
+}
+
+#logout{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
