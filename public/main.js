@@ -6,10 +6,10 @@ var input = document.getElementsByClassName("editable");
 function updateE(element) {
     //bench press	2	3	15 mins
     // exercise
-    let exercise = element.closest('tr').cells[0].innerText
-    let sets = element.closest('tr').cells[1].innerText
-    let reps = element.closest('tr').cells[2].innerText
-    let comment = element.closest('tr').cells[3].innerText
+    let meal = element.closest('tr').cells[0].innerText
+    let price = element.closest('tr').cells[1].innerText
+    let resturant = element.closest('tr').cells[2].innerText
+    let rating = element.closest('tr').cells[3].innerText
     console.log(comment)
 
 
@@ -17,10 +17,10 @@ function updateE(element) {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'exercise': exercise,
-        'sets': sets,
-        'reps': reps,
-        'comment': comment
+        'meal': meal,
+        'price': price,
+        'resturant': resturant,
+        'rating': rating
       })
     }).then(response => {
       if (response.ok) console.log('exercise updated')
@@ -30,47 +30,47 @@ function updateE(element) {
 function create(element) {
   //bench press	2	3	15 mins
   // exercise
-  let exercise = element.closest('tr').cells[0].innerText
-  let sets = element.closest('tr').cells[1].innerText
-  let reps = element.closest('tr').cells[2].innerText
-  let comment = element.closest('tr').cells[3].innerText
-  console.log(comment)
+  let meal = element.closest('tr').cells[0].innerText
+  let price = element.closest('tr').cells[1].innerText
+  let resturant = element.closest('tr').cells[2].innerText
+  let rating = element.closest('tr').cells[3].innerText
+  console.log(rating)
 
 
   fetch('create', {
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      'exercise': exercise,
-      'sets': sets,
-      'reps': reps,
-      'comment': comment
+      'meal': meal,
+      'price': price,
+      'resturant': resturant,
+      'rating': rating
     })
   }).then(response => {
-    if (response.ok) console.log('exercise updated')
+    if (response.ok) console.log('meal updated')
     window.location.reload()
   })
 }
 function deleteE(element) {
   //bench press	2	3	15 mins
   // exercise
-  let exercise = element.closest('tr').cells[0].innerText
-  let sets = element.closest('tr').cells[1].innerText
-  let reps = element.closest('tr').cells[2].innerText
-  let comment = element.closest('tr').cells[3].innerText
-  console.log(comment)
+  let meal = element.closest('tr').cells[0].innerText
+  let price = element.closest('tr').cells[1].innerText
+  let resturant = element.closest('tr').cells[2].innerText
+  let rating = element.closest('tr').cells[3].innerText
+  console.log(rating)
 
   fetch('delete', {
     method: 'delete',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      'exercise': exercise,
-      'sets': sets,
-      'reps': reps,
-      'comment': comment
+      'meal': meal,
+      'price': price,
+      'resturant': resturant,
+      'rating': rating
     })
   }).then(response => {
-    if (response.ok) console.log('exercise updated')
+    if (response.ok) console.log('meal updated')
     window.location.reload()
   })
 

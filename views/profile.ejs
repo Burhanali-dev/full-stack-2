@@ -27,32 +27,32 @@
         </div>
         <div>
             <table class="table table-bordered table-responsive-md table-striped text-center">
-                <h1>Workout Tracker</h1>
+                <h1>Meal Review</h1>
                 <tbody>
                     <tr>
                         <th scope="col" class="width60">
-                            Exercise</th>
+                            Meal</th>
                         <th scope="col" class="width20">
-                            Sets</th>
+                            Price</th>
                         <th scope="col" class="width20">
-                            Reps</th>
+                            Resturant</th>
                         <th scope="col" class="width20">
-                            Comments</th>
+                            Rating (out of 10)</th>
                     </tr>
 
-                    <% for(var i=0; i<workouts.length; i++) {%>
+                    <% for(var i=0; i<meals.length; i++) {%>
                         <tr>
-                            <td exercise id="exercise" class="pt-3-half"  >
-                                <%= workouts[i].exercise %>
+                            <td  id="meal" class="pt-3-half"  >
+                                <%= meals[i].meal %>
                             </td>
-                            <td oninput="updateE(this)"  id="sets" class="editable pt-3-half" contenteditable="true">
-                                <%= workouts[i].sets %>
+                            <td oninput="updateE(this)"  id="price" class="editable pt-3-half" contenteditable="true">
+                                <%= meals[i].price %>
                             </td>
-                            <td oninput="updateE(this)"  id="reps" class="editable pt-3-half" contenteditable="true">
-                                <%= workouts[i].reps %>
+                            <td oninput="updateE(this)"  id="resturant" class= "editable pt-3-half" contenteditable="true">
+                                <%= meals[i].resturant %>
                             </td>
-                            <td oninput="updateE(this)" id = "comment" class="editable pt-3-half" contenteditable="true">
-                                <%= workouts[i].comment %>
+                            <td oninput="updateE(this)" id = "rating" class="editable pt-3-half" contenteditable="true">
+                                <%= meals[i].rating %>
                             </td>
                             <td>
                                 <button onclick=deleteE(this)>delete</button>
@@ -61,17 +61,17 @@
                         <% } %>
                         
                         <tr>
-                            <td exercise id="exercise" class="editable pt-3-half" contenteditable="true" >
-                                add exercise
+                            <td  id="meal" class="editable pt-3-half" contenteditable="true" >
+                                add Meal
                             </td>
-                            <td   id="sets" class="editable pt-3-half" contenteditable="true">
-                                number of sets
+                            <td   id="price" class="editable pt-3-half" contenteditable="true">
+                                cost of meal
                             </td>
-                            <td   id="reps" class="editable pt-3-half" contenteditable="true">
-                                number of reps
+                            <td   id="resturant" class="editable pt-3-half" contenteditable="true">
+                                Resturant
                             </td>
-                            <td  id = "comment" class="editable pt-3-half" contenteditable="true">
-                                any Comments
+                            <td  id = "rating" class="editable pt-3-half" contenteditable="true">
+                                Rating out of 10
                             </td>
                             <td>
                                 <button onclick=create(this)>Add</button>

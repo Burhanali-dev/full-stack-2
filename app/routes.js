@@ -9,19 +9,19 @@ module.exports = function (app, passport, db) {
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function (req, res) {
-    db.collection('workout').find(
+    db.collection('food').find(
       { 'user': req.user.local.email }
     ).toArray((err, result) => {
       if (err) return console.log(err)
       if (result[0]?.user == req.user.local.email) {
         res.render('profile.ejs', {
           user: req.user,
-          workouts: result
+          meals: result
         })
       } else {
         res.render('profile.ejs', {
           user: req.user,
-          workouts: []
+          meals: []
         })
       }
     })
@@ -38,12 +38,12 @@ module.exports = function (app, passport, db) {
   // message board routes ===============================================================
 
   app.post('/create', (req, res) => {
-    const collection = db.collection('workout');
+    const collection = db.collection('food')
     collection.insertMany([{
-      exercise: req.body.exercise,
-      sets: req.body.sets,
-      reps: req.body.reps,
-      comment: req.body.comment,
+      meal: req.body.meal,
+      price: req.body.price,
+      resturant: req.body.resturant,
+      rating: req.body.rating,
       user: req.user.local.email 
     }])
     console.log('saved to database')
@@ -51,14 +51,14 @@ module.exports = function (app, passport, db) {
   })
 
   app.put('/update', (req, res) => {
-    db.collection('workout')
-      .updateOne({ exercise: req.body.exercise }, {
+    db.collection('food')
+      .updateOne({ meal: req.body.meal }, {
         $set: {
-          exercise: req.body.exercise,
-          sets: req.body.sets,
-          reps: req.body.reps,
-          comment: req.body.comment,
-          user: req.user.local.email
+          meal: req.body.meal,
+          price: req.body.price,
+          resturant: req.body.resturant,
+          rating: req.body.rating,
+          user: req.user.local.email 
         }
       }, {
         sort: { _id: -1 },
@@ -68,12 +68,12 @@ module.exports = function (app, passport, db) {
   })
 
   app.delete('/delete', (req, res) => {
-    db.collection('workout').findOneAndDelete({
-      exercise: req.body.exercise,
-      sets: req.body.sets,
-      reps: req.body.reps,
-      comment: req.body.comment,
-      user: req.user.local.email
+    db.collection('food').findOneAndDelete({
+      meal: req.body.meal,
+      price: req.body.price,
+      resturant: req.body.resturant,
+      rating: req.body.rating,
+      user: req.user.local.email 
     }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
